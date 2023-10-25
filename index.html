@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Task 1
+        let dateNow = new Date();
+        let myBd = new Date("Jan 14 , 2002");
+        let dif = dateNow - myBd;
+        let Seconds =parseInt(dif / 1000 );
+        console.log(`${Seconds} Seconds`);
+        let Minutes = parseInt(Seconds / 60 );
+        console.log(`${Minutes} Minutes`);
+        let Hours = parseInt(Minutes / 60) ;
+        console.log(`${Hours} Hours`);
+        let Days = parseInt(Hours / 24) ;
+        console.log(`${Days} Days`);
+        let Months = parseInt(Days / 30) ;
+        console.log(`${Months} Months`);
+        let Years = parseInt(Days / 365) ;
+        console.log(`${Years} Years`);
+        // Needed Output
+        // "1247939400 Seconds"
+        // "20798990 Minutes"
+        // "346650 Hours"
+        // "14444 Days"
+        // "481 Months"
+        // "40 Years"
+
+        console.log("#".repeat(60))
+
+        // Task 2
+        dateNow.setTime(1000);
+        dateNow.setFullYear(1980);
+        dateNow.setHours(0)
+        console.log(dateNow)
+        // Needed Output
+        // "Tue Jan 01 1980 00:00:01 GMT+0200 (Eastern European Standard Time)"
+
+        console.log("#".repeat(60))
+
+        // Task 3
+        let dateNow2 = new Date();
+        let list = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+        dateNow2.setDate(0);
+        console.log(dateNow2);
+        let month = dateNow2.getMonth();
+        console.log(`Previous Month Is ${list[month]} And Last Day Is ${dateNow2.getDate()}`)
+        // Needed Output
+        // "Sat Apr 30 2022 18:13:20 GMT+0200 (Eastern European Standard Time)"
+        // "Previous Month Is April And Last Day Is 30"
+
+        console.log("#".repeat(60))
+
+        // Task 3
+        console.log(myBd);
+        let date = new Date(2002,0,14);
+        console.log(date);
+        let date2 = new Date(1010959200000);
+        console.log(date2)
+        // Needed Output
+        // "Mon Oct 25 1982 00:00:00 GMT+0200 (Eastern European Standard Time)"
+        // "Mon Oct 25 1982 00:00:00 GMT+0200 (Eastern European Standard Time)"
+        // "Mon Oct 25 1982 00:00:00 GMT+0200 (Eastern European Standard Time)"
+        
+        console.log("#".repeat(60))
+
+        // Task 4
+        let Start = performance.now();
+        for ( let i = 1 ; i < 1000 ; i++){
+            document.write(`${i} <br>`)
+        }
+        let End = performance.now();
+        // let diff = End - Start ;
+        console.log(`Loop Took ${parseInt(End - Start)} Milliseconds.`)
+        // Needed Output
+        // "Loop Took 1921 Milliseconds."
+        
+        console.log("#".repeat(60))
+
+        // Task 5
+        // Write Your Generator Function Here
+        function* gen(){
+            let index = 14;
+            yield index ;
+            let num = 140;
+            let sum = index + num ; 
+            while(true){
+                yield sum;
+                sum += num +=200
+            }
+        }
+        let generator = gen();
+        console.log(generator.next()); // {value: 14, done: false}
+        console.log(generator.next()); // {value: 154, done: false}
+        console.log(generator.next()); // {value: 494, done: false}
+        console.log(generator.next()); // {value: 1034, done: false}
+        console.log(generator.next()); // {value: 1774, done: false}
+        console.log(generator.next()); // {value: 2714, done: false}
+        console.log(generator.next()); // {value: 3854, done: false}
+        console.log(generator.next()); // {value: 5194, done: false}
+        console.log(generator.next()); // {value: 6734, done: false}
+        
+        console.log("#".repeat(60))
+
+        // Task 5
+        function* genNumbers() {
+        yield* [1, 2, 2, 2, 3, 4, 5];
+        }
+        function* genLetters() {
+        yield* ["A", "B", "B", "B", "C", "D"];
+        }
+        // Write Your Generator Function Here
+        function* genAll(){
+            yield* new Set(genNumbers());
+            yield* new Set(genLetters());
+        }
+        let generator2 = genAll();
+        console.log(generator2.next()); // {value: 1, done: false}
+        console.log(generator2.next()); // {value: 2, done: false}
+        console.log(generator2.next()); // {value: 3, done: false}
+        console.log(generator2.next()); // {value: 4, done: false}
+        console.log(generator2.next()); // {value: 5, done: false}
+        console.log(generator2.next()); // {value: "A", done: false}
+        console.log(generator2.next()); // {value: "B", done: false}
+        console.log(generator2.next()); // {value: "C", done: false}
+        console.log(generator2.next()); // {value: "D", done: false}
+        
+        console.log("#".repeat(60))
+
+    </script>
+    <script src="./main.js" type="module"></script>
+    <script src="./mod-one.js"  type="module"></script>
+    <script src="./mod-two.js"  type="module"></script>
+</body>
+</html>
